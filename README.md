@@ -8,37 +8,12 @@ Progress tracking (lessons/levels) stays off-chain in the frontend. Only the
 final "you completed a path" event is recorded here, minted by the platform
 admin once it has verified completion.
 
-## Interface
 
-- `initialize(admin: Address)` — one-time setup, sets the authorized minter.
-- `mint_certificate(learner: Address, course: Symbol)` — admin-gated. Fails
-  with `AlreadyMinted` if `learner` already holds a certificate for `course`.
-- `has_certificate(learner: Address, course: Symbol) -> bool`
-- `get_certificate(learner: Address, course: Symbol) -> Option<Certificate>`
+## Deployed instances
 
-Minting publishes a `CertificateMinted` event topic'd by `learner`.
+### Testnet
 
-## Build
-
-```bash
-cargo test
-stellar contract build
-```
-
-Requires the `wasm32v1-none` target (Rust 1.84+):
-
-```bash
-rustup target add wasm32v1-none
-```
-
-## Deploy (testnet)
-
-```bash
-stellar contract deploy \
-  --wasm target/wasm32v1-none/release/certificate_contract.wasm \
-  --source <admin-identity> \
-  --network testnet
-
-stellar contract invoke --id <contract-id> --source <admin-identity> --network testnet \
-  -- initialize --admin <admin-address>
-```
+- Contract ID: `CCVFIMTLHN2YFVKFITJYU4PWDIGNG2Q7AWWF4GPKBUBQOJEOGRDTIK5K`
+- Admin address: `GC3RLT4NG5FFNGHJO64FTQ3NF62FPIKHBSBTRLAJOSASAKBYZHWKIM5Z`
+- Wasm hash: `ad8d43486b33391091e1d63bd118f073f55788bbe80535bf34998ecbffc8ba67`
+- [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CCVFIMTLHN2YFVKFITJYU4PWDIGNG2Q7AWWF4GPKBUBQOJEOGRDTIK5K)
